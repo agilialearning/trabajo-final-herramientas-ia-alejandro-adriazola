@@ -6,3 +6,7 @@ disertacion/
 diapositivas/capturas/
 diapositivas/diapositivas.html
 diapositivas/diapositivas.pdf
+# fuera del repo: disertacion, demo y borrador de la wiki
+diapositivas/
+abrir_demo.bat
+wiki/
