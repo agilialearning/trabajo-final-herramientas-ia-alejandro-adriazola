@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>04_busquedas_google.html</title>
+    <style>
+      html, body {
+        box-sizing: border-box;
+        display: flow-root;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.10.2.min.js"></script>
+<script>
+Bokeh.set_log_level("info");
+</script>
+  </head>
+  <body>
+    <div id="b1f671f9-e1b5-4709-9cce-5cfdef565cd9" data-root-id="p1084" style="display: contents;"></div>
+  
+    <script type="application/json" id="d89ec88f-00d1-48fd-9097-dbd8ed8bb0b3">
+      {"f07951bf-2138-46d7-9e92-2f53532a25db":{"version":"3.10.2","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"p1144","attributes":{"notifications":{"type":"object","name":"Notifications","id":"p1145"}}},"roots":[{"type":"object","name":"Figure","id":"p1084","attributes":{"width":820,"height":380,"x_range":{"type":"object","name":"DataRange1d","id":"p1085"},"y_range":{"type":"object","name":"DataRange1d","id":"p1086"},"x_scale":{"type":"object","name":"LogScale","id":"p1094"},"y_scale":{"type":"object","name":"LinearScale","id":"p1095"},"title":{"type":"object","name":"Title","id":"p1087","attributes":{"text":"B\u00fasquedas reales en Google: impresiones vs. % de clics (rojo = oportunidad)"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1125","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1119","attributes":{"selected":{"type":"object","name":"Selection","id":"p1120","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1121"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/wXBsQ2CAAAEwHsSEzpxCkkcB0wsrFjAxljQ2GjJEGDvBA5g5wBWOgYVdyXW2KLGDg0O6HBBjydeeOODL374Y0YRVqEMVdiEJrRhH46hC6dwDtdwC/cwhDFM4REWlWIpRJQAAAA="},"shape":[37],"dtype":"int32","order":"little"}],["consulta",{"type":"ndarray","array":["atencion psicologica","ayuda psicologica","centro psicologico","centro psicologico arequipa","centro psicologico de padres a hijos","de padres a hijos - centro psicologico","emotiva","inteligencia artificial validada para el tratamiento cognitivo","mentiva","necesito ayuda psicologica","psicologia deportiva","psicologico","psicologo deportivo","psicologo deportivo peru","psicologo familiar","psicologo online","psicologo online peru","psicologos arequipa","psicologos en arequipa","psicologos en cusco","psicologos en linea","psicologos online","psicologos online peru","terapia de pareja","terapia de pareja arequipa","terapia de pareja cusco","terapia de pareja peru","terapia de parejas","terapia individual","terapia online","terapia psicologica","terapia psicologica online","terapia psicologica para adultos","terapias adultos","\u2022atencion psicologica personalizada","\u2022psicoterapia en linea asequible","\u2022terapia psicologica online"],"shape":[37],"dtype":"object","order":"little"}],["clics",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/2NggAAWBgYGRigbGWhAOTA5NgYGBmYsapnQxGDq0WliAACKkr98lAAAAA=="},"shape":[37],"dtype":"int32","order":"little"}],["impresiones",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/y3NMQqDUBRE0eMijIiiEFHBQpGEBFubLC32blge/mJgijt3Wuw4MaHEAy80+GTkGDHgyPgmZkOLAm/0aR89PH888XM7VnSYsaBCnVzBR+LjAniLG/aUAAAA"},"shape":[37],"dtype":"int32","order":"little"}],["posicion",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/5Pwrtv45LqLgzEINDs4VIusc39opewg3/o6cIedgUMaGCg5BO2Qa319UcHh8FeNmP4mLweQsiqVEIfriwtsua5LQ+QD7SD6q7Qc2l4H7pA7agkx11jF4ewZEJCB0DzmDjH9h75qnHGAmDPFEmqPrsM3jZj+Q6XmDodA9jg5OjCAgRdEvY6jA8hZcqGeUPd5Q9RvtXN4WCWyzj1R18EDxEh3dngTuEOuNdvTgQvkwC4riD5WJ4j6py4Q+qozxNwYE4dZM2fOnPnT0cEWrMER6l8PiLvcXBwAhx7g9CgBAAA="},"shape":[37],"dtype":"float64","order":"little"}],["ctr",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/2NgQAWFS6uZTx1hdThswHPYgIfZAVUWE5yzfD6n+JwmXJ2pR7OJRzMLnC8v9do5ufaH/UVX8diSi6IO+rteLOrWE4LLowP/N0f83hzhc/gUaT5DaT4rDnUCcPGOdhBgh/Mh7haG86kFANRvTP8oAQAA"},"shape":[37],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#c8553d","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#c8553d","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96","#008f96"],"shape":[37],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1126","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1127"}}},"glyph":{"type":"object","name":"Scatter","id":"p1122","attributes":{"x":{"type":"field","field":"impresiones"},"y":{"type":"field","field":"ctr"},"size":{"type":"value","value":10},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.75},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.75},"hatch_color":{"type":"field","field":"color"},"hatch_alpha":{"type":"value","value":0.75}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1123","attributes":{"x":{"type":"field","field":"impresiones"},"y":{"type":"field","field":"ctr"},"size":{"type":"value","value":10},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"field","field":"color"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1124","attributes":{"x":{"type":"field","field":"impresiones"},"y":{"type":"field","field":"ctr"},"size":{"type":"value","value":10},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"field","field":"color"},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1093","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1106"},{"type":"object","name":"WheelZoomTool","id":"p1107","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1108","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1109","attributes":{"syncable":false,"line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","handles":{"type":"object","name":"BoxInteractionHandles","id":"p1115","attributes":{"all":{"type":"object","name":"AreaVisuals","id":"p1114","attributes":{"fill_color":"white","hover_fill_color":"lightgray"}}}}}}}},{"type":"object","name":"SaveTool","id":"p1116"},{"type":"object","name":"ResetTool","id":"p1117"},{"type":"object","name":"HelpTool","id":"p1118"},{"type":"object","name":"HoverTool","id":"p1128","attributes":{"renderers":"auto","tooltips":[["B\u00fasqueda","@consulta"],["Impresiones","@impresiones"],["Clics","@clics"],["Posici\u00f3n","@posicion{0.0}"]],"sort_by":null}}]}},"toolbar_location":null,"left":[{"type":"object","name":"LinearAxis","id":"p1101","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1102","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1103"},"axis_label":"% de clics (CTR)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1104"}}}],"below":[{"type":"object","name":"LogAxis","id":"p1096","attributes":{"ticker":{"type":"object","name":"LogTicker","id":"p1097","attributes":{"num_minor_ticks":10,"mantissas":[1,5]}},"formatter":{"type":"object","name":"LogTickFormatter","id":"p1098"},"axis_label":"Impresiones (escala logar\u00edtmica)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1099"}}}],"center":[{"type":"object","name":"Grid","id":"p1100","attributes":{"axis":{"id":"p1096"}}},{"type":"object","name":"Grid","id":"p1105","attributes":{"dimension":1,"axis":{"id":"p1101"}}}]}}]}}
+    </script>
+    <script>
+      (function() {
+        const fn = function() {
+          Bokeh.safely(function() {
+            (function(root) {
+              function embed_document(root) {
+              const docs_json = document.getElementById('d89ec88f-00d1-48fd-9097-dbd8ed8bb0b3').textContent;
+              const render_items = [{"docid":"f07951bf-2138-46d7-9e92-2f53532a25db","roots":{"p1084":"b1f671f9-e1b5-4709-9cce-5cfdef565cd9"},"root_ids":["p1084"]}];
+              root.Bokeh.embed.embed_items(docs_json, render_items);
+              }
+              if (root.Bokeh !== undefined) {
+                embed_document(root);
+              } else {
+                let attempts = 0;
+                const timer = setInterval(function(root) {
+                  if (root.Bokeh !== undefined) {
+                    clearInterval(timer);
+                    embed_document(root);
+                  } else {
+                    attempts++;
+                    if (attempts > 100) {
+                      clearInterval(timer);
+                      console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                    }
+                  }
+                }, 10, root)
+              }
+            })(window);
+          });
+        };
+        if (document.readyState != "loading") fn();
+        else document.addEventListener("DOMContentLoaded", fn);
+      })();
+    </script>
+  </body>
+</html>

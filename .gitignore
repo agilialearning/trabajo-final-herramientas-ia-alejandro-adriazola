@@ -1,0 +1,8 @@
+env/
+__pycache__/
+.ipynb_checkpoints/
+# versiones anteriores de las diapositivas
+disertacion/
+diapositivas/capturas/
+diapositivas/diapositivas.html
+diapositivas/diapositivas.pdf

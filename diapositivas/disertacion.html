@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consolidación de datos de marketing y ventas · Trabajo final</title>
+<link rel="stylesheet" href="assets/estilos.css">
+<style>
+.captura{border:1.5px solid var(--tinta);background:#fff;max-height:640px;overflow:hidden}
+.captura img{display:block;width:100%}
+.grafico{display:block;max-width:100%;max-height:700px;border:1.5px solid var(--linea);background:#fff}
+</style>
+</head>
+<body>
+<main class="stage">
+
+<!-- ================= PORTADA ================= -->
+<section data-bloque="Inicio" class="slide portada">
+  <div class="col" style="gap:44px;max-width:1500px">
+    <div class="eyebrow">Trabajo final · Herramientas para Inteligencia Artificial</div>
+    <h1 style="font-size:104px">Consolidación y visualización de datos de marketing y ventas de un <span class="acento">centro de psicología online</span></h1>
+    <p class="cuerpo">Maestría en Inteligencia Artificial Aplicada · UCSM–UTPL</p>
+    <p class="dato" style="margin-top:30px">Alejandro Adriazola · Docente: René Elizalde · Noviembre 2026</p>
+  </div>
+  <div class="notes">Presentar el trabajo en el orden de la wiki: introducción, marco teórico, dataset, pasos con visualizaciones, conclusiones.
+Una idea para todo el trabajo: juntar en una sola tabla datos que hoy están en cinco lugares distintos y leerlos con gráficos.</div>
+</section>
+
+<!-- ================= 01 INTRODUCCIÓN ================= -->
+<section data-bloque="Introducción" class="slide oscuro separador">
+  <div class="col" style="width:100%;gap:40px">
+    <div class="eyebrow">Tema 1 de 5</div>
+    <h1 style="font-size:120px">Introducción</h1>
+    <p class="contexto">El problema: la información del negocio está <mark>dispersa en varias plataformas</mark> y nadie la ve junta.</p>
+    <div class="temario"><span class="on">Introducción</span><span>Herramientas</span><span>Datos</span><span>Proceso</span><span>Resultados</span></div>
+  </div>
+  <div class="notes"><b>Separadora: Introducción.</b></div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>01</b> Introducción</span><span>El problema</span></div>
+  <div class="col" style="width:100%;gap:56px">
+    <div class="eyebrow">Situación</div>
+    <h1>Cinco fuentes, <span class="acento">ninguna vista común</span></h1>
+    <div class="tarjetas cuatro">
+      <div class="tarjeta"><span class="n">01</span><p class="t">Search Console</p><p class="resultado">Cuántas veces aparece en Google y cuántos clics recibe.</p></div>
+      <div class="tarjeta"><span class="n">02</span><p class="t">Google Analytics 4</p><p class="resultado">De qué canal llegan las visitas a la web.</p></div>
+      <div class="tarjeta"><span class="n">03</span><p class="t">Meta</p><p class="resultado">Alcance e interacción de Facebook e Instagram.</p></div>
+      <div class="tarjeta"><span class="n">04</span><p class="t">Ventas</p><p class="resultado">Pacientes, sesiones e ingresos.</p></div>
+    </div>
+    <p class="contexto chico">Cada plataforma tiene su propio panel y su propio formato. Para saber si el marketing se traduce en ventas hay que <mark>juntarlas a mano</mark>.</p>
+  </div>
+  <div class="notes">El caso: un centro de psicología online en Perú. Cada fuente responde una pregunta distinta, pero ninguna responde la pregunta del negocio: qué canal trae pacientes e ingresos.
+Search Console y GA4 son de Google; Meta es Facebook e Instagram; las ventas viven en otra herramienta.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>01</b> Introducción</span><span>Objetivo</span></div>
+  <div class="col" style="width:100%;gap:56px">
+    <div class="eyebrow">Objetivo general</div>
+    <h1>Integrar las fuentes en <span class="acento">un solo dataset</span></h1>
+    <ol class="numerada">
+      <li><div>Leer un dataset en CSV y otro en una base de datos SQLite con Pandas.</div></li>
+      <li><div>Limpiar y unir los datos por fecha y por canal.</div></li>
+      <li><div>Construir visualizaciones con Matplotlib, Bokeh y PyGWalker.</div></li>
+      <li><div>Interpretar lo que muestran y publicar todo en GitHub.</div></li>
+    </ol>
+    <p class="contexto chico">Es un trabajo de <mark>análisis descriptivo</mark>: ordenar y mirar los datos, no predecir.</p>
+  </div>
+  <div class="notes">Objetivos específicos = los cuatro puntos. Aclarar desde el inicio que no hay modelo predictivo: el curso pide manejo de datos y visualización.</div>
+</section>
+
+<!-- ================= 02 HERRAMIENTAS ================= -->
+<section data-bloque="Herramientas" class="slide oscuro separador">
+  <div class="col" style="width:100%;gap:40px">
+    <div class="eyebrow">Tema 2 de 5</div>
+    <h1 style="font-size:120px">Marco teórico</h1>
+    <p class="contexto">Las herramientas del curso y <mark>para qué sirve cada una</mark> en este trabajo.</p>
+    <div class="temario"><span>Introducción</span><span class="on">Herramientas</span><span>Datos</span><span>Proceso</span><span>Resultados</span></div>
+  </div>
+  <div class="notes"><b>Separadora: Marco teórico.</b></div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>02</b> Marco teórico</span><span>Herramientas</span></div>
+  <div class="col" style="width:100%;gap:48px">
+    <div class="eyebrow">Qué se usó</div>
+    <h1>Siete herramientas, <span class="acento">un flujo</span></h1>
+    <div class="datos">
+      <div><span class="k">JupyterLab</span><span class="v">Entorno donde se escribe y ejecuta el notebook</span></div>
+      <div><span class="k">Python + Pandas</span><span class="v">Leer, limpiar y unir los datos</span></div>
+      <div><span class="k">SQLite + SQL</span><span class="v">Base de datos de ventas y consultas con JOIN</span></div>
+      <div><span class="k">Matplotlib</span><span class="v">Gráficos estáticos (PNG)</span></div>
+      <div><span class="k">Bokeh</span><span class="v">Gráficos interactivos (HTML)</span></div>
+      <div><span class="k">PyGWalker</span><span class="v">Explorador visual tipo Tableau dentro del notebook</span></div>
+      <div><span class="k">GitHub</span><span class="v">Repositorio, README y wiki con el informe</span></div>
+    </div>
+  </div>
+  <div class="notes">Marco teórico completo en la wiki. Concepto clave: integración de datos (Doan et al., 2012): combinar fuentes heterogéneas en una vista unificada.</div>
+</section>
+
+<!-- ================= 03 DATOS ================= -->
+<section data-bloque="Datos" class="slide oscuro separador">
+  <div class="col" style="width:100%;gap:40px">
+    <div class="eyebrow">Tema 3 de 5</div>
+    <h1 style="font-size:120px">Dataset</h1>
+    <p class="contexto">Dos datasets: <mark>exports reales en CSV</mark> y <mark>ventas sintéticas en SQLite</mark>.</p>
+    <div class="temario"><span>Introducción</span><span>Herramientas</span><span class="on">Datos</span><span>Proceso</span><span>Resultados</span></div>
+  </div>
+  <div class="notes"><b>Separadora: Dataset.</b></div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>03</b> Dataset</span><span>Dataset 1 · CSV</span></div>
+  <div class="col" style="width:100%;gap:48px">
+    <div class="eyebrow">Datos reales · feb a nov 2026</div>
+    <h1>Cinco exports de <span class="acento">marketing</span></h1>
+    <div class="datos">
+      <div><span class="k">Search Console · por día</span><span class="v">284 filas · clics, impresiones, CTR, posición</span></div>
+      <div><span class="k">Search Console · consultas</span><span class="v">467 filas · qué buscó la gente</span></div>
+      <div><span class="k">GA4 · canales</span><span class="v">6 filas · visitas por canal</span></div>
+      <div><span class="k">Meta · Facebook</span><span class="v">18 publicaciones</span></div>
+      <div><span class="k">Meta · Instagram</span><span class="v">20 publicaciones</span></div>
+    </div>
+    <p class="contexto chico">Total: <mark>795 filas reales</mark>. Son datos agregados, sin información de personas, por eso se pueden publicar.</p>
+  </div>
+  <div class="notes">Se descargaron directo de cada plataforma (botón Exportar). Ninguno identifica a un paciente: son conteos por día, por consulta o por publicación.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>03</b> Dataset</span><span>Dataset 2 · SQLite</span></div>
+  <div class="col" style="width:100%;gap:48px">
+    <div class="eyebrow">Datos sintéticos</div>
+    <h1>Ventas en una base <span class="acento">SQLite</span></h1>
+    <div class="cifras">
+      <div><b>6</b><span>canales</span></div>
+      <div><b>885</b><span>pacientes</span></div>
+      <div><b>5 493</b><span>sesiones</span></div>
+      <div><b>S/ 566K</b><span>ingresos simulados</span></div>
+    </div>
+    <p class="contexto chico">Las ventas reales tienen <mark>datos de pacientes</mark> y no se pueden publicar. Se generaron con <mark>generar_datos.py</mark>, siguiendo los clics y las publicaciones reales.</p>
+  </div>
+  <div class="notes">Decir con claridad: las ventas son sintéticas. Se simulan con una distribución de Poisson: más clics en Google ese día, más pacientes que llegan por Google; tras una publicación en redes, más pacientes por redes durante 3 días.
+Tres tablas relacionadas: canales, pacientes (con su canal y plan) y sesiones (con fecha y monto).
+Por qué SQLite: el curso pide un dataset desde base de datos, y SQLite es un archivo, no necesita servidor, cualquiera lo replica.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>03</b> Dataset</span><span>Decisiones</span></div>
+  <div class="col" style="width:100%;gap:56px">
+    <div class="eyebrow">Por qué así</div>
+    <h1>Decisiones <span class="acento">técnicas</span></h1>
+    <div class="tarjetas cuatro">
+      <div class="tarjeta"><span class="n">7 179</span><p class="t">Registros</p><p class="resultado">Dentro del rango pedido (5 000 a 10 000).</p></div>
+      <div class="tarjeta"><span class="n">CSV</span><p class="t">Reales</p><p class="resultado">El marketing se mide con datos de verdad.</p></div>
+      <div class="tarjeta"><span class="n">DB</span><p class="t">Sintéticos</p><p class="resultado">Protege a los pacientes.</p></div>
+      <div class="tarjeta"><span class="n">Ø</span><p class="t">Sin predicción</p><p class="resultado">Con 9 meses de datos se describe, no se pronostica.</p></div>
+    </div>
+  </div>
+  <div class="notes">7 179 = 795 filas CSV + 6 canales + 885 pacientes + 5 493 sesiones.
+Si preguntan por qué no un modelo: la serie es corta (284 días) y las ventas son simuladas; un modelo aprendería la regla con que se simularon.</div>
+</section>
+
+<!-- ================= 04 PROCESO ================= -->
+<section data-bloque="Proceso" class="slide oscuro separador">
+  <div class="col" style="width:100%;gap:40px">
+    <div class="eyebrow">Tema 4 de 5</div>
+    <h1 style="font-size:120px">Pasos</h1>
+    <p class="contexto">Cómo se hizo, con <mark>capturas reales del notebook</mark>.</p>
+    <div class="temario"><span>Introducción</span><span>Herramientas</span><span>Datos</span><span class="on">Proceso</span><span>Resultados</span></div>
+  </div>
+  <div class="notes"><b>Separadora: Pasos.</b> No se explica código: se muestra qué hace cada paso.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>04</b> Pasos</span><span>El flujo</span></div>
+  <div class="col" style="width:100%;gap:64px">
+    <div class="eyebrow">De la descarga al repositorio</div>
+    <h1>Seis pasos, <span class="acento">un notebook</span></h1>
+    <div class="flujo">
+      <div class="nodo"><span class="n">01</span><span class="t">Crear la base</span><span class="d">SQL + SQLite</span></div><span class="fl"></span>
+      <div class="nodo"><span class="n">02</span><span class="t">Cargar</span><span class="d">CSV y base</span></div><span class="fl"></span>
+      <div class="nodo"><span class="n">03</span><span class="t">Limpiar</span><span class="d">Fechas, %, nombres</span></div><span class="fl"></span>
+      <div class="nodo clave"><span class="n">04</span><span class="t">Unir</span><span class="d">Por día y canal</span></div><span class="fl"></span>
+      <div class="nodo"><span class="n">05</span><span class="t">Visualizar</span><span class="d">3 librerías</span></div><span class="fl"></span>
+      <div class="nodo"><span class="n">06</span><span class="t">Publicar</span><span class="d">GitHub + wiki</span></div>
+    </div>
+  </div>
+  <div class="notes">Este es el mapa de la sección. Cada paso tiene su captura en las diapos que siguen.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>04</b> Pasos</span><span>Abrir el entorno</span></div>
+  <div class="dos">
+    <div class="col" style="gap:40px;flex:0 0 640px">
+      <div class="eyebrow">Paso 0</div>
+      <h1 style="font-size:84px">Levantar <span class="acento">JupyterLab</span></h1>
+      <p class="contexto chico">Se activa el entorno de Python y se abre el notebook. En la carpeta del trabajo, <mark>abrir_demo.bat</mark> hace lo mismo con doble clic.</p>
+    </div>
+    <div class="terminal" style="flex:1">
+      <span><span class="p">&gt;</span> env\Scripts\activate</span>
+      <span><span class="p">&gt;</span> pip install -r requirements.txt</span>
+      <span class="c">Successfully installed pandas bokeh pygwalker ...</span>
+      <span><span class="p">&gt;</span> jupyter lab trabajo_final.ipynb</span>
+      <span class="ok">Jupyter Server running at http://localhost:8888/lab</span>
+    </div>
+  </div>
+  <div class="notes">Terminal recreada en HTML (los comandos son los del README). En la demo en vivo se usa abrir_demo.bat.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>04</b> Pasos</span><span>01 · Crear la base</span></div>
+  <div class="dos">
+    <div class="col" style="gap:40px;flex:0 0 560px">
+      <div class="eyebrow">Paso 1 · SQL</div>
+      <h1 style="font-size:84px">Tres tablas <span class="acento">relacionadas</span></h1>
+      <p class="contexto chico"><mark>canales</mark> → <mark>pacientes</mark> → <mark>sesiones</mark>, unidas por claves foráneas. El script SQL crea la base <b>ventas.db</b>.</p>
+    </div>
+    <div class="captura" style="flex:1"><img src="img/p0_sql.png" alt="Script SQL que crea las tablas"></div>
+  </div>
+  <div class="notes">Archivo sql/01_crear_tablas.sql. Cada paciente pertenece a un canal; cada sesión a un paciente. El monto tiene un CHECK mayor que cero.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>04</b> Pasos</span><span>02 · Cargar</span></div>
+  <div class="col" style="width:100%;gap:26px">
+    <div class="eyebrow">Dataset 1 · CSV</div>
+    <h1 style="font-size:64px">Cargar el dataset 1 con <span class="acento">Pandas</span></h1>
+    <div class="captura" style="max-height:700px"><img src="img/p1_carga_csv.png" alt="Carga de los CSV con Pandas"></div>
+    <p class="contexto chico"><mark>pd.read_csv</mark> lee los cinco exports: 795 filas reales.</p>
+  </div>
+  <div class="notes">pd.read_csv lee los 5 exports. GA4 trae líneas de comentario con #, por eso comment='#'.</div>
+</section>
+<section class="slide">
+  <div class="encab"><span><b>04</b> Pasos</span><span>02 · Cargar</span></div>
+  <div class="col" style="width:100%;gap:26px">
+    <div class="eyebrow">Dataset 2 · SQLite</div>
+    <h1 style="font-size:64px">Cargar el dataset 2 desde <span class="acento">SQLite</span></h1>
+    <div class="captura" style="max-height:700px"><img src="img/p2_carga_bd.png" alt="Carga de la base SQLite con Pandas"></div>
+    <p class="contexto chico"><mark>pd.read_sql</mark> lee las tres tablas: 6 canales, 885 pacientes, 5 493 sesiones.</p>
+  </div>
+  <div class="notes">Conexión con sqlite3 y lectura con pd.read_sql. Los dos datasets quedan como tablas de Pandas.</div>
+</section>
+<section class="slide">
+  <div class="encab"><span><b>04</b> Pasos</span><span>03 · Limpiar</span></div>
+  <div class="col" style="width:100%;gap:26px">
+    <div class="eyebrow">Limpieza 1 de 2</div>
+    <h1 style="font-size:64px">Limpiar <span class="acento">Search Console</span></h1>
+    <div class="captura" style="max-height:700px"><img src="img/p3_limpieza_gsc.png" alt="Limpieza de Search Console"></div>
+    <p class="contexto chico">El CTR viene como texto con "%" y se pasa a número. Las búsquedas con y sin tilde se juntan: <mark>467 a 420</mark>.</p>
+  </div>
+  <div class="notes">Ejemplo: 'psicólogo' y 'psicologo' eran filas distintas; se suman en una.</div>
+</section>
+<section class="slide">
+  <div class="encab"><span><b>04</b> Pasos</span><span>03 · Limpiar</span></div>
+  <div class="col" style="width:100%;gap:26px">
+    <div class="eyebrow">Limpieza 2 de 2</div>
+    <h1 style="font-size:64px">Limpiar <span class="acento">GA4 y Meta</span></h1>
+    <div class="captura" style="max-height:720px"><img src="img/p4_limpieza_meta.png" alt="Limpieza de GA4 y Meta"></div>
+    <p class="contexto chico">Los canales de GA4 se agrupan igual que en ventas. Facebook e Instagram se llevan a <mark>las mismas 5 columnas</mark>.</p>
+  </div>
+  <div class="notes">Facebook llama 'Espectadores' a lo que Instagram llama 'Alcance'; se renombran para poder juntarlas (38 publicaciones). 'Unassigned' de GA4 se descarta.</div>
+</section>
+
+<section class="slide arcilla">
+  <div class="encab"><span><b>04</b> Pasos</span><span>04 · Unir</span></div>
+  <div class="dos">
+    <div class="col" style="gap:40px;flex:0 0 560px">
+      <div class="eyebrow">El paso central</div>
+      <h1 style="font-size:84px">Una fila por día con <span class="acento">todas las fuentes</span></h1>
+      <p class="contexto chico">Un calendario de 284 días al que se le pegan Google, redes y ventas: <mark>284 filas × 10 columnas</mark>.</p>
+    </div>
+    <div class="captura" style="flex:1"><img src="img/p5_union.png" alt="Unión diaria con merge"></div>
+  </div>
+  <div class="notes">Este es el dataset consolidado: el objetivo del trabajo. Se usa un calendario completo para que los días sin clics o sin publicaciones queden en cero y no desaparezcan.
+Además se arma una tabla por canal (5 filas) uniendo visitas de GA4 con pacientes e ingresos.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>04</b> Pasos</span><span>Consultas SQL</span></div>
+  <div class="dos">
+    <div class="col" style="gap:40px;flex:0 0 560px">
+      <div class="eyebrow">SQL desde el notebook</div>
+      <h1 style="font-size:84px">Consultas con <span class="acento">JOIN</span></h1>
+      <p class="contexto chico">Ingresos por canal, por plan y por mes, calculados <mark>dentro de la base</mark> con sql/03_consultas.sql.</p>
+    </div>
+    <div class="captura" style="flex:1"><img src="img/p6_consultas.png" alt="Resultado de las consultas SQL"></div>
+  </div>
+  <div class="notes">La consulta principal une canales, pacientes y sesiones y suma los montos por canal.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>04</b> Pasos</span><span>Demo en vivo</span></div>
+  <div class="col" style="width:100%;gap:48px">
+    <div class="eyebrow">Respaldo</div>
+    <h1>Verlo <span class="acento">funcionando</span></h1>
+    <div class="col" style="gap:24px">
+      <a class="boton-abrir" href="http://localhost:8888/lab/tree/trabajo_final.ipynb" target="_blank">Abrir el notebook en JupyterLab →</a>
+      <a class="boton-abrir" href="../graficos/03_evolucion_semanal.html" target="_blank">Gráfico interactivo: evolución semanal →</a>
+      <a class="boton-abrir" href="../graficos/04_busquedas_google.html" target="_blank">Gráfico interactivo: búsquedas en Google →</a>
+      <a class="boton-abrir" href="https://github.com/agilialearning/trabajo-final-herramientas-ia-alejandro-adriazola" target="_blank">Repositorio en GitHub →</a>
+    </div>
+    <p class="contexto chico">Antes de presentar: doble clic en <mark>abrir_demo.bat</mark> para que el primer botón funcione.</p>
+  </div>
+  <div class="notes">Demo de 1 a 2 minutos: abrir el notebook, Run All, bajar hasta PyGWalker y arrastrar una columna. Si algo falla, seguir con las capturas: la evidencia ya está en las diapos.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>04</b> Pasos</span><span>06 · Publicar</span></div>
+  <div class="col" style="width:100%;gap:48px">
+    <div class="eyebrow">Repositorio</div>
+    <h1>Todo queda en <span class="acento">GitHub</span></h1>
+    <div class="datos">
+      <div><span class="k">datos/inicial</span><span class="v">Los 5 CSV y la base ventas.db</span></div>
+      <div><span class="k">sql/</span><span class="v">Crear tablas, insertar datos y consultas</span></div>
+      <div><span class="k">generar_datos.py</span><span class="v">Script que crea las ventas sintéticas</span></div>
+      <div><span class="k">trabajo_final.ipynb</span><span class="v">El notebook con todos los pasos</span></div>
+      <div><span class="k">datos/final</span><span class="v">Dataset consolidado (diario y por canal)</span></div>
+      <div><span class="k">README + Wiki</span><span class="v">Cómo replicarlo y el informe completo</span></div>
+    </div>
+  </div>
+  <div class="notes">Cualquiera puede clonar el repo, instalar requirements.txt y obtener los mismos resultados.</div>
+</section>
+
+<!-- ================= 05 RESULTADOS ================= -->
+<section data-bloque="Resultados" class="slide oscuro separador">
+  <div class="col" style="width:100%;gap:40px">
+    <div class="eyebrow">Tema 5 de 5</div>
+    <h1 style="font-size:120px">Visualizaciones y conclusiones</h1>
+    <p class="contexto">Lo que muestran los gráficos. Las ventas son sintéticas: <mark>se leen como escenario</mark>, no como resultado del negocio.</p>
+    <div class="temario"><span>Introducción</span><span>Herramientas</span><span>Datos</span><span>Proceso</span><span class="on">Resultados</span></div>
+  </div>
+  <div class="notes"><b>Separadora: Visualizaciones.</b></div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>05</b> Visualizaciones</span><span>Matplotlib</span></div>
+  <div class="dos">
+    <div class="col" style="gap:36px;flex:0 0 520px">
+      <div class="eyebrow">Panel mensual</div>
+      <h1 style="font-size:76px">Google <span class="acento">muestra más</span>, pero pocos entran</h1>
+      <p class="contexto chico">Las impresiones subieron de <mark>328 en febrero a 2 376 en septiembre</mark>. Los clics siguen bajos: 248 en 284 días. Las redes no publican desde junio.</p>
+    </div>
+    <img class="grafico" style="flex:1;min-width:0" src="img/01_panel_mensual.png" alt="Panel mensual">
+  </div>
+  <div class="notes">Datos reales (Search Console y Meta). Interpretación: el sitio gana visibilidad, pero el título y la descripción en Google no convencen a hacer clic (CTR bajo).</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>05</b> Visualizaciones</span><span>Matplotlib</span></div>
+  <div class="dos">
+    <div class="col" style="gap:36px;flex:0 0 520px">
+      <div class="eyebrow">Visitas y pacientes por canal</div>
+      <h1 style="font-size:76px">Cada canal <span class="acento">rinde distinto</span></h1>
+      <p class="contexto chico">El tráfico directo trae más visitas; en el escenario, la <mark>recomendación</mark> trae más pacientes e ingresos. La IA ya trae 26 visitas (3 %).</p>
+    </div>
+    <img class="grafico" style="flex:1;min-width:0" src="img/02_visitas_vs_pacientes.png" alt="Visitas vs pacientes por canal">
+  </div>
+  <div class="notes">Visitas: reales (GA4). Pacientes e ingresos: sintéticos. La lectura útil es el método: con ventas reales, este gráfico diría qué canal convierte mejor.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>05</b> Visualizaciones</span><span>Bokeh</span></div>
+  <div class="dos">
+    <div class="col" style="gap:36px;flex:0 0 520px">
+      <div class="eyebrow">Interactivo · semanal</div>
+      <h1 style="font-size:76px">Clics y pacientes de Google <span class="acento">por semana</span></h1>
+      <p class="contexto chico">Se mueven juntos (correlación 0,83) <mark>porque así se simuló</mark>. Sirve para comprobar que la unión por fecha funciona.</p>
+    </div>
+    <img class="grafico" style="flex:1;min-width:0" src="img/03_evolucion_semanal.png" alt="Evolución semanal en Bokeh">
+  </div>
+  <div class="notes">Bokeh permite zoom y ver el valor exacto al pasar el mouse (abrir el HTML en la demo). No presentar la correlación como hallazgo: es una consecuencia del diseño de los datos.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>05</b> Visualizaciones</span><span>Bokeh</span></div>
+  <div class="dos">
+    <div class="col" style="gap:36px;flex:0 0 520px">
+      <div class="eyebrow">Interactivo · consultas</div>
+      <h1 style="font-size:76px">Búsquedas con muchas vistas y <span class="acento">pocos clics</span></h1>
+      <p class="contexto chico">Cada punto es una búsqueda real. Ejemplo: <mark>"psicólogo deportivo"</mark>, 392 impresiones. Ahí hay oportunidad de mejorar el contenido.</p>
+    </div>
+    <img class="grafico" style="flex:1;min-width:0" src="img/04_busquedas_google.png" alt="Búsquedas en Google en Bokeh">
+  </div>
+  <div class="notes">Datos reales. Eje X: impresiones; eje Y: posición. Pasando el mouse se ve la consulta. PyGWalker no tiene captura aquí: se muestra en vivo en el notebook.</div>
+</section>
+
+<section class="slide">
+  <div class="encab"><span><b>05</b> Conclusiones</span><span>Conclusiones</span></div>
+  <div class="col" style="width:100%;gap:48px">
+    <div class="eyebrow">Lo que se logró</div>
+    <h1>Conclusiones</h1>
+    <ol class="numerada">
+      <li><div>Se integraron cinco fuentes reales y una base SQLite en un dataset diario de 284 filas.</div></li>
+      <li><div>Pandas resolvió las diferencias de formato entre plataformas.</div></li>
+      <li><div>Los datos reales muestran visibilidad creciente en Google y redes sin actividad desde junio.</div></li>
+      <li><div>El flujo queda listo para cambiar las ventas sintéticas por reales.</div></li>
+    </ol>
+    <p class="contexto chico"><b>Limitación:</b> las ventas son <mark>sintéticas</mark>; las cifras de pacientes e ingresos no describen al negocio real.</p>
+  </div>
+  <div class="notes">Cerrar con la limitación sin rodeos. Siguiente paso natural: conectar las ventas reales (sin publicarlas) y repetir el análisis.</div>
+</section>
+
+<section class="slide oscuro">
+  <div class="col" style="gap:48px">
+    <div class="eyebrow">Gracias</div>
+    <h1 style="font-size:140px"><span class="acento">Preguntas</span></h1>
+    <p class="cuerpo" style="color:rgba(243,241,236,.75)">Alejandro Adriazola · Herramientas para IA · UCSM–UTPL</p>
+  </div>
+  <div class="notes">Preguntas probables: ¿por qué sintéticos? (privacidad de pacientes) · ¿por qué SQLite? (no necesita servidor) · ¿cómo se generaron? (Poisson ligada a clics y publicaciones reales) · ¿por qué no predicción? (serie corta y ventas simuladas).</div>
+</section>
+
+</main>
+<script src="assets/taller-datos.js"></script>
+<script src="assets/presentacion.js"></script>
+</body>
+</html>
